@@ -7,11 +7,10 @@ class PackageManager(abc.ABC):
     # TODO: Move to a config class?
     #       - Load config at start with defaults?
     config_name = None
-    default_config_path = "~/bin/pkgs"
 
-    def getConfigs(self, path=default_config_path):
+    def getConfigs(self, path):
         # TODO: Better handling of file paths
-        base_path = os.path.expanduser(path + "/" + self.config_name)
+        base_path = os.path.expanduser(path + self.config_name)
 
         files = []
         for r, _, f in os.walk(base_path):

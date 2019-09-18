@@ -1,23 +1,15 @@
+import os
 from configparser import ConfigParser
 
-def removeComments(line):
-    i = line.find('#')
-    if i >= 0:
-        line = line[:i]
+default_config = {"paths": {"base_path": "~/.config/pkg-mgr",
+                            "pkg_path": "pkgs"},
+                  "managers": {"order": ""}}
 
-    return line.strip()
+def loadConfig(config_path):
+    cfg = ConfigParser()
 
-def parseConfig(file):
-    pkgs = []
+    cfg.read_dict(default_config)
 
-    with open(file) as f:
-        for line in f.readlines():
-            line = removeComments(line)
-            line = line.strip()
-            if line != "":
-                pkgs.append(line)
+    cfg.read(os.path.expanduser(config_path))
 
-    return pkgs
-
-def getAppConfig(path):
-    return ConfigParser().read(path)
+    return cfg
