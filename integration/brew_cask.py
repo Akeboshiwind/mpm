@@ -19,28 +19,20 @@ class BrewCask(core.PackageManager):
     def install(self, pkgs):
         if type(pkgs) is not list:
             pkgs = [pkgs]
-        out = subprocess.call("brew cask install".split() + pkgs,
-                              stdout=subprocess.DEVNULL,
-                              stderr=subprocess.DEVNULL)
+        out = subprocess.call("brew cask install".split() + pkgs)
         return out == 0
 
     def uninstall(self, pkgs):
         if type(pkgs) is not list:
             pkgs = [pkgs]
-        out = subprocess.call("brew cask uninstall".split() + pkgs,
-                              stdout=subprocess.DEVNULL,
-                              stderr=subprocess.DEVNULL)
+        out = subprocess.call("brew cask uninstall".split() + pkgs)
         return out == 0
 
     def upgrade(self, pkgs=[]):
         if type(pkgs) is not list:
             pkgs = [pkgs]
-        out = subprocess.call("brew cask upgrade".split() + pkgs,
-                              stdout=subprocess.DEVNULL,
-                              stderr=subprocess.DEVNULL)
+        out = subprocess.call("brew cask upgrade".split() + pkgs)
 
     def update(self):
-        out = subprocess.call("brew cask update".split(),
-                              stdout=subprocess.DEVNULL,
-                              stderr=subprocess.DEVNULL)
+        out = subprocess.call("brew cask update".split())
         return out == 0
