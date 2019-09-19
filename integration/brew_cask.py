@@ -1,5 +1,6 @@
-from integration import core
 import subprocess
+
+from integration import core
 
 class BrewCask(core.PackageManager):
 
@@ -32,6 +33,7 @@ class BrewCask(core.PackageManager):
         if type(pkgs) is not list:
             pkgs = [pkgs]
         out = subprocess.call("brew cask upgrade".split() + pkgs)
+        return out == 0
 
     def update(self):
         out = subprocess.call("brew cask update".split())

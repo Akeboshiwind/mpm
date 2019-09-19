@@ -1,12 +1,12 @@
-from integration import core
 import subprocess
+
+from integration import core
 
 class Brew(core.PackageManager):
 
     config_name = "brew"
 
     def list(self):
-        # TODO: Deal with error here
         myOut = subprocess.Popen("brew leaves".split(),
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.STDOUT)
