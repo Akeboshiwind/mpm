@@ -20,20 +20,32 @@ class Brew(core.PackageManager):
     def install(self, pkgs):
         if type(pkgs) is not list:
             pkgs = [pkgs]
-        out = subprocess.call("brew install".split() + pkgs)
-        return out == 0
+
+        if len(pkgs) > 0:
+            out = subprocess.call("brew install".split() + pkgs)
+            return out == 0
+        else:
+            return True
 
     def uninstall(self, pkgs):
         if type(pkgs) is not list:
             pkgs = [pkgs]
-        out = subprocess.call("brew uninstall".split() + pkgs)
-        return out == 0
+
+        if len(pkgs) > 0:
+            out = subprocess.call("brew uninstall".split() + pkgs)
+            return out == 0
+        else:
+            return True
 
     def upgrade(self, pkgs=[]):
         if type(pkgs) is not list:
             pkgs = [pkgs]
-        out = subprocess.call("brew upgrade".split() + pkgs)
-        return out == 0
+
+        if len(pkgs) > 0:
+            out = subprocess.call("brew upgrade".split() + pkgs)
+            return out == 0
+        else:
+            return True
 
     def update(self):
         out = subprocess.call("brew update".split())
