@@ -34,7 +34,7 @@ def command(args, cfg):
         if not(args.dry_run):
             manager.install(list(new_pkgs))
         else:
-            print("The following " + manager.config_name + " would have been installed")
+            print("The following " + manager.config_name + " packages would have been installed")
             print(list(new_pkgs))
 
         # Uninstall old packages
@@ -43,7 +43,7 @@ def command(args, cfg):
         if not(args.dry_run):
             manager.uninstall(list(old_pkgs))
         else:
-            print("The following " + manager.config_name + " would have been uninstalled")
+            print("The following " + manager.config_name + " packages would have been uninstalled")
             print(list(old_pkgs))
 
         # Update installed packages
@@ -51,5 +51,5 @@ def command(args, cfg):
         if not(args.dry_run):
             manager.upgrade(list(pkgs))
         else:
-            print("The following " + manager.config_name + " would have been upgraded")
+            print("The following " + manager.config_name + " packages would have been upgraded")
             print("TODO")
