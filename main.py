@@ -1,6 +1,6 @@
 import os, sys, argparse
 
-import command
+from command import update, list
 from config import loadConfig
 
 if __name__ == "__main__":
@@ -17,12 +17,12 @@ if __name__ == "__main__":
     ## Update subcommand
     parser_update = subparsers.add_parser("update", help="update packages (default)")
     parser_update.add_argument("--dry-run", help="Just list the packages, don't actually run any commands", action="store_true")
-    parser_update.set_defaults(func=command.update.command)
+    parser_update.set_defaults(func=update.command)
 
     ## List subcommand
     parser_list = subparsers.add_parser("list", help="list packages")
     parser_list.add_argument("--dry-run", help="Just list the packages, don't actually run any commands", action="store_true")
-    parser_list.set_defaults(func=command.list.command)
+    parser_list.set_defaults(func=list.command)
 
 
     # Default to the 'update' command

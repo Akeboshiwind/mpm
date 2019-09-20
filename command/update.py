@@ -1,5 +1,5 @@
 from integration import brew, brew_cask
-from pkrglist import parsePkgList
+from pkglist import parsePkgList
 import utils
 
 managers = {"brew": brew.Brew,
