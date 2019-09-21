@@ -7,6 +7,9 @@ class BrewCask(core.PackageManager):
     config_name = "cask"
 
     def list(self):
+        return self.leaves()
+
+    def leaves(self):
         myOut = subprocess.Popen("brew cask ls --full-name".split(),
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.STDOUT)

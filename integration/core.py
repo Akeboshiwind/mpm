@@ -21,7 +21,12 @@ class PackageManager(abc.ABC):
 
     @abc.abstractmethod
     def list(self):
-        """Lists the packages currently installed on the system"""
+        """Lists all the packages currently installed through the integration"""
+        pass
+
+    @abc.abstractmethod
+    def leaves(self):
+        """Lists the packages currently installed through the integration that aren't dependencies of any other package"""
         pass
 
     @abc.abstractmethod

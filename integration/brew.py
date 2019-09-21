@@ -7,6 +7,17 @@ class Brew(core.PackageManager):
     config_name = "brew"
 
     def list(self):
+        myOut = subprocess.Popen("brew list --full-name".split(),
+                                 stdout=subprocess.PIPE,
+                                 stderr=subprocess.STDOUT)
+        stdout, _ = myOut.communicate()
+
+        pkgs = stdout.decode("utf-8").split('\n')
+        pkgs = set(filter(lambda p: p != '',pkgs))
+
+        return pkgs
+
+    def leaves(self):
         myOut = subprocess.Popen("brew leaves".split(),
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.STDOUT)

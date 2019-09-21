@@ -30,6 +30,8 @@ def command(args, cfg):
 
         # Install new packages
         print("[" + manager.config_name + "] install new packages")
+        # Compare with the list of full packages because some of the requested
+        # packages might be dependencies on others, so .leaves() would be wrong
         new_pkgs = pkgs.difference(manager.list())
         if not(args.dry_run):
             manager.install(list(new_pkgs))
@@ -39,7 +41,9 @@ def command(args, cfg):
 
         # Uninstall old packages
         print("[" + manager.config_name + "] uninstall old packages")
-        old_pkgs = manager.list().difference(pkgs)
+        # Compare with the packages that aren't dependencies (leaves) so that we
+        # don't uninstall a required package
+        old_pkgs = manager.leaves().difference(pkgs)
         if not(args.dry_run):
             manager.uninstall(list(old_pkgs))
         else:
