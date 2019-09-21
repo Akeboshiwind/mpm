@@ -1,7 +1,7 @@
 import os
 from configparser import ConfigParser
 
-default_config = {"paths": {"base_path": "~/.config/pkg-mgr",
+default_config = {"paths": {"base_path": "~/.config/mpm",
                             "pkg_path": "pkgs"},
                   "managers": {"order": ""}}
 

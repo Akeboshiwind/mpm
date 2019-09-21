@@ -5,7 +5,7 @@ from config import loadConfig
 
 if __name__ == "__main__":
     # Load Config
-    config_file_path = "~/.config/pkg-mgr/config.ini"
+    config_file_path = "~/.config/mpm/config.ini"
     cfg = loadConfig(config_file_path)
 
 

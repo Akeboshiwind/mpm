@@ -1,4 +1,4 @@
-# pkg-mgr
+# mpm
 
 A file-based meta package manager.
 
