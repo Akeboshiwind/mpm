@@ -113,3 +113,22 @@ jupyter
 clojure
 runit
 ```
+
+## TODO
+
+- [ ] Documentation
+  - [x] Name
+  - [x] Readme
+  - [x] Usage instructions
+  - [ ] `man` page
+  - [x] Config files
+- [ ] Installation
+  - [x] Makefile
+  - [ ] Script release (and upload of binary)
+  - [ ] Bash and Zsh completions
+- [ ] Re-do testing
+  - [ ] Simplify? (should run quickly, just verify that the commands work?)
+  - [ ] Test output types of commands?
+- [ ] Version fixing for packages
+- [ ] Only update packages which have updates avaliable
+- [ ] Install only command?
