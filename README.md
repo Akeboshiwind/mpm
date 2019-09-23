@@ -89,7 +89,7 @@ working how you like it.
 
 E.g.
 ```
-# zsh
+# pkgs/brew/zsh
 # Main packages
 zsh
 zsh-syntax-highlighting
@@ -99,7 +99,7 @@ fzf
 ```
 
 ```
-# jupyter-clj
+# pkgs/brew/jupyter-clj
 jupyter
 clojure
 runit
