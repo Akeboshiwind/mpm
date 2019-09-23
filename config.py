@@ -1,7 +1,11 @@
 import os
 from configparser import ConfigParser
+import utils
 
-default_config = {"paths": {"base_path": "~/.config/mpm",
+base_path = "~/.config/mpm"
+config_file_path = utils.concatPaths(base_path, "config.ini")
+
+default_config = {"paths": {"base_path": base_path,
                             "pkg_path": "pkgs"},
                   "managers": {"order": ""}}
 

@@ -1,5 +1,6 @@
 import abc
 import os
+import utils
 
 class PackageManager(abc.ABC):
     """Describes the operations a package manager can perform"""
@@ -9,8 +10,8 @@ class PackageManager(abc.ABC):
     config_name = None
 
     def getConfigs(self, path):
-        # TODO: Better handling of file paths
-        base_path = os.path.expanduser(path + self.config_name)
+        base_path = utils.concatPaths(path, self.config_name)
+        base_path = os.path.expanduser(base_path)
 
         files = []
         for r, _, f in os.walk(base_path):

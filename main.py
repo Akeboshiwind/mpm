@@ -1,11 +1,10 @@
 import os, sys, argparse
 
 from command import update
-from config import loadConfig
+from config import loadConfig, config_file_path
 
 if __name__ == "__main__":
     # Load Config
-    config_file_path = "~/.config/mpm/config.ini"
     cfg = loadConfig(config_file_path)
 
 
