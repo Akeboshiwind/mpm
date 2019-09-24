@@ -7,9 +7,9 @@ class Brew(core.PackageManager):
     config_name = "brew"
 
     def list(self):
-        myOut = subprocess.Popen("brew list --full-name".split(),
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.STDOUT)
+        myOut = self.Popen("brew list --full-name".split(),
+                           stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT)
         stdout, _ = myOut.communicate()
 
         pkgs = stdout.decode("utf-8").split('\n')
@@ -18,9 +18,9 @@ class Brew(core.PackageManager):
         return pkgs
 
     def leaves(self):
-        myOut = subprocess.Popen("brew leaves".split(),
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.STDOUT)
+        myOut = self.Popen("brew leaves".split(),
+                           stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT)
         stdout, _ = myOut.communicate()
 
         pkgs = stdout.decode("utf-8").split('\n')
@@ -33,7 +33,7 @@ class Brew(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = subprocess.call("brew install".split() + pkgs)
+            out = self.call("brew install".split() + pkgs)
             return out == 0
         else:
             return True
@@ -43,7 +43,7 @@ class Brew(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = subprocess.call("brew uninstall".split() + pkgs)
+            out = self.call("brew uninstall".split() + pkgs)
             return out == 0
         else:
             return True
@@ -53,11 +53,11 @@ class Brew(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = subprocess.call("brew upgrade".split() + pkgs)
+            out = self.call("brew upgrade".split() + pkgs)
             return out == 0
         else:
             return True
 
     def update(self):
-        out = subprocess.call("brew update".split())
+        out = self.call("brew update".split())
         return out == 0

@@ -1,6 +1,7 @@
 import abc
 import os
 import utils
+import subprocess
 
 class PackageManager(abc.ABC):
     """Describes the operations a package manager can perform"""
@@ -23,6 +24,19 @@ class PackageManager(abc.ABC):
                 files.append(os.path.join(r, file))
 
         return files
+
+    # Change to being a decorator?
+    def call(self, command, **kwargs):
+        if self.verbosity >= 2:
+            print("command: ", command)
+
+        return subprocess.call(command, **kwargs)
+
+    def Popen(self, command, **kwargs):
+        if self.verbosity >= 2:
+            print("command: ", command)
+
+        return subprocess.Popen(command, **kwargs)
 
     @abc.abstractmethod
     def list(self):

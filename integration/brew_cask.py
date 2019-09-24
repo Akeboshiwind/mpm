@@ -10,9 +10,9 @@ class BrewCask(core.PackageManager):
         return self.leaves()
 
     def leaves(self):
-        myOut = subprocess.Popen("brew cask ls --full-name".split(),
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.STDOUT)
+        myOut = self.Popen("brew cask ls --full-name".split(),
+                           stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT)
         stdout, _ = myOut.communicate()
 
         pkgs = stdout.decode("utf-8").split('\n')
@@ -25,7 +25,7 @@ class BrewCask(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = subprocess.call("brew cask install".split() + pkgs)
+            out = self.call("brew cask install".split() + pkgs)
             return out == 0
         else:
             return True
@@ -35,7 +35,7 @@ class BrewCask(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = subprocess.call("brew cask uninstall".split() + pkgs)
+            out = self.call("brew cask uninstall".split() + pkgs)
             return out == 0
         else:
             return True
@@ -45,12 +45,12 @@ class BrewCask(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = subprocess.call("brew cask upgrade".split() + pkgs)
+            out = self.call("brew cask upgrade".split() + pkgs)
             return out == 0
         else:
             return True
 
     def update(self):
         # Cask updates though brew
-        out = subprocess.call("brew update".split())
+        out = self.call("brew update".split())
         return out == 0
