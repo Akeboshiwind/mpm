@@ -27,6 +27,10 @@ if __name__ == "__main__":
     parser_update.add_argument("--dry-run",
                                help="Just list the packages, don't actually run any commands",
                                action="store_true")
+    parser_update.add_argument("--verbose", "-v",
+                               action="count",
+                               default=0,
+                               help="The verbosity level")
     parser_update.set_defaults(func=update.command)
 
 
