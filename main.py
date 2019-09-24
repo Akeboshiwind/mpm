@@ -3,7 +3,7 @@ import os, sys, argparse
 from command import update
 from config import loadConfig, config_file_path
 
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 
 if __name__ == "__main__":
     # Load Config
