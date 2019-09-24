@@ -51,5 +51,6 @@ class BrewCask(core.PackageManager):
             return True
 
     def update(self):
+        # Cask updates though brew
         out = subprocess.call("brew update".split())
         return out == 0
