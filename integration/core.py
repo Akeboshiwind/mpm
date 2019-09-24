@@ -8,6 +8,10 @@ class PackageManager(abc.ABC):
     # TODO: Move to a config class?
     #       - Load config at start with defaults?
     config_name = None
+    verbosity = 0
+
+    def __init__(self, verbosity):
+        self.verbosity = verbosity
 
     def getConfigs(self, path):
         base_path = utils.concatPaths(path, self.config_name)

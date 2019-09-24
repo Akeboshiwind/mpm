@@ -14,7 +14,7 @@ def command(args, cfg):
 
     for integration in manager_order:
 
-        manager = managers[integration]()
+        manager = managers[integration](args.verbose)
 
         # Get a list of packages
         pkgs = set()
