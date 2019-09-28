@@ -144,3 +144,17 @@ clojure
 runit
 ```
 
+## FAQ
+
+
+### Why not just use a bash script?
+
+Originally this was a bash script but it wasn't very portable and was quite
+confusing to read, even after attempting to simplify it. You can see it
+[here](https://github.com/Akeboshiwind/dotfiles/blob/e3114c4573b5430df20a33bd2a6480e857ec8a52/bin/bin/update).
+
+This project has many improvements:
+- Multiple integrations
+- Tests
+- Portable
+- Much simpler code
