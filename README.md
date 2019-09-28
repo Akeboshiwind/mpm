@@ -1,6 +1,6 @@
 # mpm
 
-`mpm` is a file-based *m*eta *p*ackage *m*anager.
+`mpm` is a file-based **m**eta **p**ackage **m**anager.
 
 Use files with lists of packages to know **exactly** what's installed on your
 system
