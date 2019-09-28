@@ -146,6 +146,12 @@ runit
 
 ## FAQ
 
+### Why not just use Nix or Guix?
+
+Nix and Guix are great projects, but they bring a little too much to the table
+for me. What this project sets out to achieve is to make the existing systems I
+already use slightly better rather than replace them entirely. This makes this
+smaller system much more flexible and portable.
 
 ### Why not just use a bash script?
 
