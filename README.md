@@ -16,11 +16,11 @@ program to work, then realise you can't remember what you even installed?
 What about deciding to move to a different OS and forgotten what packages you
 even had installed in the first place, then taken hours to figure it out?
 
-Or have you decided to 'clean up' your installed packages only to be faced with
+Or have you decided to "clean up" your installed packages only to be faced with
 a wall of packages all of which might be important or relied on by some corner
 of your system?
 
-This kind of 'clutter' makes your system feel much more brittle. If you don't
+This kind of **clutter** makes your system feel much more brittle. If you don't
 even know what you've got installed or why, you won't be able to replicate it
 later if something goes wrong.
 
@@ -39,7 +39,7 @@ related packages into an individual file is quite useful too.
 ## Installation
 
 Currently this project is in an alpha state while I test it. If you want to try
-it out head over to the 'Releases' tab and download the binary then place it in
+it out head over to the "Releases" tab and download the binary then place it in
 a `bin/` folder somewhere, e.g. `~/bin/`.
 
 Or if you want to try an even more cutting edge version, clone the project
@@ -71,7 +71,7 @@ order=
 ## Package List Files
 
 The `~/.config/mpm/pkgs` directory contains a folder for each package manager,
-each of these directories can contain many 'Package List Files'.
+each of these directories can contain many "Package List Files".
 
 When `mpm` is run, it looks through each of these files and builds up a list of
 packages that you want installed. These files are simply text files that contain
