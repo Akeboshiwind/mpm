@@ -38,17 +38,21 @@ related packages into an individual file is quite useful too.
 
 ## Installation
 
-Currently this project is in an alpha state while I test it. If you want to try it out head over to the 'Releases' tab and download the binary then place it in a `bin/` folder somewhere, e.g. `~/bin/`.
+Currently this project is in an alpha state while I test it. If you want to try
+it out head over to the 'Releases' tab and download the binary then place it in
+a `bin/` folder somewhere, e.g. `~/bin/`.
 
-Or if you want to try an even more cutting edge version, clone the project locally, have python3 and make installed then run:
+Or if you want to try an even more cutting edge version, clone the project
+locally, have python3 and make installed then run:
 ```bash
 make install
 ```
 Which will build the binary then install it in `~/bin/`.
 
-## Config
+## Application Config
 
-`mpm` is configured with an .ini file at `~/.config/mpm/` described below:
+`mpm` is configured with an .ini file at `~/.config/mpm/config.ini` described
+below:
 
 ```ini
 [paths]
