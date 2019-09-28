@@ -68,15 +68,14 @@ order=
     cask
 ```
 
-`mpm` uses files to figure out what packages should be installed. If the default
-`pkg_path` setting is used, these 'package list files' are stored a folder
-respective to the package manager you want to install the packages with.
+## Package List Files
 
-For example, for `brew` the package list files should be put in a folder
-`~/.config/pkgs/brew/`.
+The `~/.config/mpm/pkgs` directory contains a folder for each package manager,
+each of these directories can contain many 'Package List Files'.
 
-Package list files are simply newline separated files listing the packages you
-want installed on the system with two extra features:
+When `mpm` is run, it looks through each of these files and builds up a list of
+packages that you want installed. These files are simply text files that contain
+a newline separated list of package names with two extra features:
 - Blanks and extra whitespace are ignored
 - Anything after and including a `#` is ignored as a comment
 
