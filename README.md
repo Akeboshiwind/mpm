@@ -2,12 +2,39 @@
 
 `mpm` is a file-based *m*eta *p*ackage *m*anager.
 
-The goals of this project are as follows:
-- Have a set of files which describes the desired packages to be installed on the system
-- Have an update command which:
-  - Reads the current state of the system
-  - Uninstalles packages that aren't listed
-  - Installs packages that aren't installed
+Use files with lists of packages to know **exactly** what's installed on your
+system
+
+## Motivation
+
+Have you ever installed a package just to try it out then forget to uninstall it
+later on, leaving it there to clutter up your system?
+
+Have you taken hours to figure out the **exact** list of packages needed for a
+program to work, then realise you can't remember what you even installed?
+
+What about deciding to move to a different OS and forgotten what packages you
+even had installed in the first place, then taken hours to figure it out?
+
+Or have you decided to 'clean up' your installed packages only to be faced with
+a wall of packages all of which might be important or relied on by some corner
+of your system?
+
+This kind of 'clutter' makes your system feel much more brittle. If you don't
+even know what you've got installed or why, you won't be able to replicate it
+later if something goes wrong.
+
+`mpm` solves these problems by making what packages are installed on your system
+**explicit**.
+
+It does this by giving you a folder with files in it, each file is just a list
+of packages you want installed on your system. By running `mpm update`, packages
+in the list are installed and updated, packages that aren't are uninstalled.
+It's as simple as that.
+
+Now you know exactly what's installed on your system, but how can you tell why a
+package is installed? Just add a comment explaining why! Grouping together
+related packages into an individual file is quite useful too.
 
 ## Installation
 
