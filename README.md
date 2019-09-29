@@ -100,14 +100,14 @@ specified managers in the config:
 3. Uninstall packages that are installed on the system but aren't listed
 4. Update the installed packages
 
-To run the update
-```bash
-mpm update
-```
-
 To show the packages that would be installed/uninstalled:
 ```bash
 mpm update --dry-run
+```
+
+To run the update
+```bash
+mpm update
 ```
 
 ### General Advice
