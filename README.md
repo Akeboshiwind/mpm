@@ -21,17 +21,9 @@ This kind of **clutter** makes your system feel much more **brittle**. If you
 don't even know what you've got installed or why, you won't be able to replicate
 it later if something goes wrong.
 
-`mpm` solves these problems by making what packages are installed on your system
+`mpm` solves these problems by allowing you to specify what packages you want
+installed in static files, this makes what packages are installed on your system
 **explicit**.
-
-It does this by giving you a folder with files in it, each file is just a list
-of packages you want installed on your system. By running `mpm update`, packages
-in the list are installed and updated, packages that aren't are uninstalled.
-It's as simple as that.
-
-Now you know exactly what's installed on your system, but how can you tell why a
-package is installed? Just add a comment explaining why! Grouping together
-related packages into an individual file is quite useful too.
 
 ## Installation
 
