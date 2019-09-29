@@ -207,7 +207,7 @@ For two reasons:
 2. They are much more than just package managers
 
 Nix and Guix are great projects, but they bring a little too much to the table
-for me. `mpm` aims to be flexible enough to run on different systems easily, but
+for me. `mpm` aims to be flexible enough to run on different systems easily
 without too much mental overhead.
 
 ### Why not just use a bash script?
