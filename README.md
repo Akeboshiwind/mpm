@@ -201,10 +201,14 @@ command.
 
 ### Why not just use Nix or Guix?
 
+For two reasons:
+1. They don't allow me to just list the packages I want to install in clearly
+   marked files
+2. They are much more than just package managers
+
 Nix and Guix are great projects, but they bring a little too much to the table
-for me. What this project sets out to achieve is to make the existing systems I
-already use slightly better rather than replace them entirely. This makes this
-smaller system much more flexible and portable.
+for me. `mpm` aims to be flexible enough to run on different systems easily, but
+without too much mental overhead.
 
 ### Why not just use a bash script?
 
@@ -213,7 +217,7 @@ confusing to read, even after attempting to simplify it. You can see it
 [here](https://github.com/Akeboshiwind/dotfiles/blob/e3114c4573b5430df20a33bd2a6480e857ec8a52/bin/bin/update).
 
 This project has many improvements:
-- Multiple integrations
-- Tests
+- Support for multiple integrations
 - Portable
 - Much simpler code
+- Tests
