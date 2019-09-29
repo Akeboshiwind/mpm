@@ -110,30 +110,92 @@ To run the update
 mpm update
 ```
 
-### General Advice
+### Full example
 
-The recommended usage is to group together packages that are related into a
-single file. For example, you could group together the packages you need for a
-language you're developing with, of the packages you need for get an application
-working how you like it.
+Let's say you're using the above `config.ini` and have a set of packages you
+want to install. You might create a couple of files like so:
 
-E.g.
 ```
-# pkgs/brew/zsh
-# Main packages
-zsh
-zsh-syntax-highlighting
-
-# Addons
-fzf
+# ~/.config/mpm/pkgs/brew/main
+# Command line tools
+bash
+git
+coreutils
+jq
 ```
 
 ```
-# pkgs/brew/jupyter-clj
-jupyter
-clojure
-runit
+# ~/.config/mpm/pkgs/brew/python
+# Command line
+python3
+pip3
 ```
+
+```
+# ~/.config/mpm/pkgs/cask/main
+java
+emacs
+docker
+```
+
+```
+# ~/.config/mpm/pkgs/cask/entertainment
+spotify
+minecraft
+twitch
+```
+
+The current state of the `~/.config/mpm` directory should be:
+
+```bash
+$ tree ~/.config/mpm
+/home/ake/.config/mpm
+├── config.ini
+└── pkgs
+    ├── brew
+    │   ├── main
+    │   └── python
+    └── cask
+        ├── entertainment
+        └── main
+
+3 directories, 5 files
+```
+
+Let's see what would happen if we ran the update command:
+
+```bash
+$ mpm update --dry-run
+[brew] update
+brew updated
+[brew] install new packages
+The following brew packages will be installed
+[bash, git, coreutils, jq, python3, pip3]
+[brew] uninstall old packages
+The following brew packages will be uninstalled
+[vim]
+[brew] update packages
+The following brew packages will be upgraded
+TODO
+[cask] update
+cask updated
+[cask] install new packages
+The following cask packages will be installed
+[java, emacs, minecraft, twitch]
+[cask] uninstall old packages
+The following cask packages will be uninstalled
+[]
+[cask] update packages
+The following cask packages will be upgraded
+TODO
+```
+
+It looks like `vim` would be uninstalled if we ran update and the other packages
+we listed will be installed.
+
+If you decided you don't plan on using python on your system anymore you can
+simply delete the `~/.config/mpm/pkgs/brew/python` file and then run the update
+command.
 
 ## FAQ
 
