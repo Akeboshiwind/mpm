@@ -9,20 +9,17 @@ system
 
 Have you ever installed a package just to try it out then forget to uninstall it
 later on, leaving it there to clutter up your system?
-
 Have you taken hours to figure out the **exact** list of packages needed for a
 program to work, then realise you can't remember what you even installed?
-
 What about deciding to move to a different OS and forgotten what packages you
 even had installed in the first place, then taken hours to figure it out?
-
 Or have you decided to "clean up" your installed packages only to be faced with
 a wall of packages all of which might be important or relied on by some corner
 of your system?
 
-This kind of **clutter** makes your system feel much more brittle. If you don't
-even know what you've got installed or why, you won't be able to replicate it
-later if something goes wrong.
+This kind of **clutter** makes your system feel much more **brittle**. If you
+don't even know what you've got installed or why, you won't be able to replicate
+it later if something goes wrong.
 
 `mpm` solves these problems by making what packages are installed on your system
 **explicit**.
