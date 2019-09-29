@@ -44,6 +44,7 @@ Which will build the binary then install it in `~/bin/`.
 below:
 
 ```ini
+# ~/.config/mpm/config.ini
 [paths]
 # The folder to store the package files in
 pkg_path=pkgs
@@ -70,6 +71,7 @@ a newline separated list of package names with two extra features:
 
 For example, the following is a valid package list file:
 ```
+# ~/.config/mpm/brew/main
 # Command line tools:
 bash
 coreutils
