@@ -29,7 +29,7 @@ class PackageManager(abc.ABC):
     def getPackages(self, path):
         pkgs = set()
 
-        for c in self.getConfigs(pkg_path):
+        for c in self.getConfigs(path):
             pkgs = pkgs.union(set(parsePkgList(c)))
 
         return pkgs
