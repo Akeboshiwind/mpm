@@ -15,7 +15,7 @@ pkg2 = "5kplayer"
 class TestBrewCaskList(TestCase):
 
     def setUp(self):
-        self.mgr = brew_cask.BrewCask()
+        self.mgr = brew_cask.BrewCask(0)
 
     def test_list_returns_some_packages(self):
         pkgs = self.mgr.list()
@@ -27,16 +27,14 @@ class TestBrewCaskList(TestCase):
 class TestBrewCaskInstall(TestCase):
 
     def setUp(self):
-        self.mgr = brew_cask.BrewCask()
-        subprocess.call("brew cask uninstall".split() + [pkg1, pkg2],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL)
+        self.mgr = brew_cask.BrewCask(0)
+        subprocess.run("brew cask uninstall".split() + [pkg1], capture_output=True)
+        subprocess.run("brew cask uninstall".split() + [pkg2], capture_output=True)
 
     @classmethod
     def tearDownClass(cls):
-        subprocess.call("brew cask uninstall".split() + [pkg1, pkg2],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL)
+        subprocess.run("brew cask uninstall".split() + [pkg1], capture_output=True)
+        subprocess.run("brew cask uninstall".split() + [pkg2], capture_output=True)
 
     def test_install_a_package(self):
         out = self.mgr.install([pkg1])
@@ -63,16 +61,14 @@ class TestBrewCaskInstall(TestCase):
 class TestBrewCaskUninstall(TestCase):
 
     def setUp(self):
-        self.mgr = brew_cask.BrewCask()
-        subprocess.call("brew cask install".split() + [pkg1, pkg2],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL)
+        self.mgr = brew_cask.BrewCask(0)
+        subprocess.run("brew cask install".split() + [pkg1], capture_output=True)
+        subprocess.run("brew cask install".split() + [pkg2], capture_output=True)
 
     @classmethod
     def tearDownClass(cls):
-        subprocess.call("brew cask uninstall".split() + [pkg1, pkg2],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL)
+        subprocess.run("brew cask uninstall".split() + [pkg1], capture_output=True)
+        subprocess.run("brew cask uninstall".split() + [pkg2], capture_output=True)
 
     def test_uninstall_a_package(self):
         out = self.mgr.uninstall([pkg1])

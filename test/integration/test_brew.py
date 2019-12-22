@@ -15,7 +15,7 @@ pkg2 = "afflib"
 class TestBrewList(TestCase):
 
     def setUp(self):
-        self.mgr = brew.Brew()
+        self.mgr = brew.Brew(0)
 
     def test_list_returns_some_packages(self):
         pkgs = self.mgr.list()
@@ -27,16 +27,14 @@ class TestBrewList(TestCase):
 class TestBrewInstall(TestCase):
 
     def setUp(self):
-        self.mgr = brew.Brew()
-        subprocess.call("brew uninstall".split() + [pkg1, pkg2],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL)
+        self.mgr = brew.Brew(0)
+        subprocess.run("brew uninstall".split() + [pkg1], capture_output=True)
+        subprocess.run("brew uninstall".split() + [pkg2], capture_output=True)
 
     @classmethod
     def tearDownClass(cls):
-        subprocess.call("brew uninstall".split() + [pkg1, pkg2],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL)
+        subprocess.run("brew uninstall".split() + [pkg1], capture_output=True)
+        subprocess.run("brew uninstall".split() + [pkg2], capture_output=True)
 
     def test_install_a_package(self):
         out = self.mgr.install([pkg1])
@@ -63,16 +61,14 @@ class TestBrewInstall(TestCase):
 class TestBrewUninstall(TestCase):
 
     def setUp(self):
-        self.mgr = brew.Brew()
-        subprocess.call("brew install".split() + [pkg1, pkg2],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL)
+        self.mgr = brew.Brew(0)
+        subprocess.run("brew install".split() + [pkg1], capture_output=True)
+        subprocess.run("brew install".split() + [pkg2], capture_output=True)
 
     @classmethod
     def tearDownClass(cls):
-        subprocess.call("brew uninstall".split() + [pkg1, pkg2],
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL)
+        subprocess.run("brew uninstall".split() + [pkg1], capture_output=True)
+        subprocess.run("brew uninstall".split() + [pkg2], capture_output=True)
 
     def test_uninstall_a_package(self):
         out = self.mgr.uninstall([pkg1])
