@@ -44,7 +44,7 @@ class PackageManager(abc.ABC):
 
         out = subprocess.run(command, **kwargs)
 
-        if self.verbosity >= 2:
+        if self.verbosity >= 3:
             print("stdout:\n{}".format(out.stdout))
             print()
             print("stderr:\n{}".format(out.stderr))
