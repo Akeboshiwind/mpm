@@ -16,4 +16,7 @@ clean:
 install: build
 	cp ./${EX} ~/bin/
 
-.PHONY: build-deps build clean install
+test:
+	python3 -m unittest
+
+.PHONY: build-deps build clean install test
