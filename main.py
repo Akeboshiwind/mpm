@@ -31,6 +31,9 @@ if __name__ == "__main__":
                                action="count",
                                default=0,
                                help="The verbosity level")
+    parser_update.add_argument("--update-all",
+                               help="Include packages that we can't know if require an update",
+                               action="store_true")
     parser_update.set_defaults(func=update.command)
 
 
