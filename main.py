@@ -34,11 +34,5 @@ if __name__ == "__main__":
     parser_update.set_defaults(func=update.command)
 
 
-    # Default to the 'update' command
-    if len(sys.argv) < 2:
-        args = parser.parse_args(['update'])
-    else:
-        args = parser.parse_args(sys.argv[1:])
-
-
+    # Execute command
     args.func(args, cfg)
