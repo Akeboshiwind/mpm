@@ -16,6 +16,18 @@ class BrewCask(core.PackageManager):
 
         return pkgs
 
+    def list_non_updatable(self):
+        out = self.run("brew cask ls --versions --full-name".split())
+
+        pkgs = out.stdout.split('\n')
+        pkgs = filter(lambda p: p != '',pkgs)
+        pkgs = map(lambda p: p.split(),pkgs)
+        pkgs = filter(lambda p: p[1] == "latest",pkgs)
+        pkgs = map(lambda p: p[0],pkgs)
+        pkgs = set(pkgs)
+
+        return pkgs
+
     def install(self, pkgs):
         if type(pkgs) is not list:
             pkgs = [pkgs]

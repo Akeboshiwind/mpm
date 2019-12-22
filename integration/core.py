@@ -62,6 +62,11 @@ class PackageManager(abc.ABC):
         pass
 
     @abc.abstractmethod
+    def list_non_updatable(self):
+        """Lists the packages currently installed through the integration that we can't be certain need to be updated"""
+        pass
+
+    @abc.abstractmethod
     def install(self, pkgs):
         """Installs a list of packages"""
         pass

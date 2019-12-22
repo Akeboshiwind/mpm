@@ -58,9 +58,12 @@ def command(args, cfg):
         # Update installed packages
         print("[" + manager.config_name + "] update packages")
 
+        non_updatable_pkgs = manager.list_non_updatable()
+        updatable_pkgs = pkgs.difference(non_updatable_pkgs)
+
         if args.verbose >= 1 or args.dry_run:
             print("The following " + manager.config_name + " packages will be upgraded")
-            print("TODO")
+            print(list(updatable_pkgs))
 
         if not(args.dry_run):
-            manager.upgrade(list(pkgs))
+            manager.upgrade(list(updatable_pkgs))

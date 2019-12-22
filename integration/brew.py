@@ -21,6 +21,9 @@ class Brew(core.PackageManager):
 
         return pkgs
 
+    def list_non_updatable(self):
+        return set()
+
     def install(self, pkgs):
         if type(pkgs) is not list:
             pkgs = [pkgs]
