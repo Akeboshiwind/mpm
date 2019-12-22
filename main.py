@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     ### Update subcommand
     parser_update = subparsers.add_parser("update",
-                                          help="update packages (default, if non provided)")
+                                          help="update packages")
     parser_update.add_argument("--dry-run",
                                help="Just list the packages, don't actually run any commands",
                                action="store_true")
