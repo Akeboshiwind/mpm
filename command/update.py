@@ -1,5 +1,4 @@
 from integration import brew, brew_cask
-from pkglist import parsePkgList
 import utils
 
 managers = {"brew": brew.Brew,
@@ -17,9 +16,7 @@ def command(args, cfg):
         manager = managers[integration](args.verbose)
 
         # Get a list of packages
-        pkgs = set()
-        for c in manager.getConfigs(pkg_path):
-            pkgs = pkgs.union(set(parsePkgList(c)))
+        pkgs = manager.getPackages(pkg_path)
 
         # Update the manager
         print("[" + manager.config_name + "] update")

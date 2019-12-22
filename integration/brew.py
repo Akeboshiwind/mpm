@@ -1,5 +1,4 @@
-import subprocess
-
+import re
 from integration import core
 
 class Brew(core.PackageManager):
@@ -7,23 +6,17 @@ class Brew(core.PackageManager):
     config_name = "brew"
 
     def list(self):
-        myOut = self.Popen("brew list --full-name".split(),
-                           stdout=subprocess.PIPE,
-                           stderr=subprocess.STDOUT)
-        stdout, _ = myOut.communicate()
+        out = self.run("brew list --full-name".split())
 
-        pkgs = stdout.decode("utf-8").split('\n')
+        pkgs = out.stdout.split('\n')
         pkgs = set(filter(lambda p: p != '',pkgs))
 
         return pkgs
 
     def leaves(self):
-        myOut = self.Popen("brew leaves".split(),
-                           stdout=subprocess.PIPE,
-                           stderr=subprocess.STDOUT)
-        stdout, _ = myOut.communicate()
+        out = self.run("brew leaves".split())
 
-        pkgs = stdout.decode("utf-8").split('\n')
+        pkgs = out.stdout.split('\n')
         pkgs = set(filter(lambda p: p != '',pkgs))
 
         return pkgs
@@ -33,18 +26,23 @@ class Brew(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.call("brew install".split() + pkgs)
-            return out == 0
+            out = self.run("brew install".split() + pkgs)
+
+            if out.returncode == 0:
+                # Test to see if the package was already installed
+                return re.search(r'.*already installed.*', out.stderr) == None
+            else:
+                return False
         else:
-            return True
+            return False
 
     def uninstall(self, pkgs):
         if type(pkgs) is not list:
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.call("brew uninstall".split() + pkgs)
-            return out == 0
+            out = self.run("brew uninstall".split() + pkgs)
+            return out.returncode == 0
         else:
             return True
 
@@ -53,11 +51,11 @@ class Brew(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.call("brew upgrade".split() + pkgs)
-            return out == 0
+            out = self.run("brew upgrade".split() + pkgs)
+            return out.returncode == 0
         else:
             return True
 
     def update(self):
-        out = self.call("brew update".split())
-        return out == 0
+        out = self.run("brew update".split())
+        return out.returncode == 0

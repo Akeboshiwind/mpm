@@ -2,6 +2,7 @@ import abc
 import os
 import utils
 import subprocess
+from pkglist import parsePkgList
 
 class PackageManager(abc.ABC):
     """Describes the operations a package manager can perform"""
@@ -25,18 +26,30 @@ class PackageManager(abc.ABC):
 
         return files
 
-    # Change to being a decorator?
-    def call(self, command, **kwargs):
+    def getPackages(self, path):
+        pkgs = set()
+
+        for c in self.getConfigs(pkg_path):
+            pkgs = pkgs.union(set(parsePkgList(c)))
+
+        return pkgs
+
+    def run(self, command, **kwargs):
         if self.verbosity >= 2:
             print("command: ", command)
 
-        return subprocess.call(command, **kwargs)
+        # Always capture output so that we don't print it unless the user asks
+        kwargs["capture_output"] = True
+        kwargs["encoding"] = "UTF-8"
 
-    def Popen(self, command, **kwargs):
+        out = subprocess.run(command, **kwargs)
+
         if self.verbosity >= 2:
-            print("command: ", command)
+            print("stdout:\n{}".format(out.stdout))
+            print()
+            print("stderr:\n{}".format(out.stderr))
 
-        return subprocess.Popen(command, **kwargs)
+        return out
 
     @abc.abstractmethod
     def list(self):

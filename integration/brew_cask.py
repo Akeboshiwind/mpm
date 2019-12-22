@@ -1,5 +1,4 @@
-import subprocess
-
+import re
 from integration import core
 
 class BrewCask(core.PackageManager):
@@ -10,12 +9,9 @@ class BrewCask(core.PackageManager):
         return self.leaves()
 
     def leaves(self):
-        myOut = self.Popen("brew cask ls --full-name".split(),
-                           stdout=subprocess.PIPE,
-                           stderr=subprocess.STDOUT)
-        stdout, _ = myOut.communicate()
+        out = self.run("brew cask ls --full-name".split())
 
-        pkgs = stdout.decode("utf-8").split('\n')
+        pkgs = out.stdout.split('\n')
         pkgs = set(filter(lambda p: p != '',pkgs))
 
         return pkgs
@@ -25,8 +21,12 @@ class BrewCask(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.call("brew cask install".split() + pkgs)
-            return out == 0
+            out = self.run("brew cask install".split() + pkgs)
+            if out.returncode == 0:
+                # Test to see if the package was already installed
+                return re.search(r'.*already installed.*', out.stderr) == None
+            else:
+                return False
         else:
             return True
 
@@ -35,8 +35,8 @@ class BrewCask(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.call("brew cask uninstall".split() + pkgs)
-            return out == 0
+            out = self.run("brew cask uninstall".split() + pkgs)
+            return out.returncode == 0
         else:
             return True
 
@@ -45,12 +45,12 @@ class BrewCask(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.call("brew cask upgrade".split() + pkgs)
-            return out == 0
+            out = self.run("brew cask upgrade".split() + pkgs)
+            return out.returncode == 0
         else:
             return True
 
     def update(self):
         # Cask updates though brew
-        out = self.call("brew update".split())
-        return out == 0
+        out = self.run("brew update".split())
+        return out.returncode == 0
