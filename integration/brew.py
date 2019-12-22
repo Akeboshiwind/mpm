@@ -1,4 +1,4 @@
-import re
+import re, os
 from integration import core
 
 class Brew(core.PackageManager):
@@ -26,7 +26,9 @@ class Brew(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.run("HOMEBREW_NO_AUTO_UPDATE=1 brew install".split() + pkgs)
+            env = os.environ.copy()
+            env["HOMEBREW_NO_AUTO_UPDATE"] = "1"
+            out = self.run("brew install".split() + pkgs, env=env)
 
             if out.returncode == 0:
                 # Test to see if the package was already installed
