@@ -26,7 +26,7 @@ class Brew(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.run("brew install".split() + pkgs)
+            out = self.run("HOMEBREW_NO_AUTO_UPDATE=1 brew install".split() + pkgs)
 
             if out.returncode == 0:
                 # Test to see if the package was already installed
