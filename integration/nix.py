@@ -31,9 +31,13 @@ class Nix(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.run("nix-env --install".split() + pkgs, env=env)
+            out = self.run("nix-env --install".split() + pkgs)
 
-            return out.returncode == 0
+            if out.returncode == 0:
+                # Test to see if the package was already installed
+                return re.search(r'.*replacing.*', out.stderr) == None
+            else:
+                return False
         else:
             return False
 
@@ -43,7 +47,12 @@ class Nix(core.PackageManager):
 
         if len(pkgs) > 0:
             out = self.run("nix-env --uninstall".split() + pkgs)
-            return out.returncode == 0
+
+            if out.returncode == 0:
+                # Test to see if the package was already uninstalled
+                return out.stderr != ""
+            else:
+                return False
         else:
             return True
 
