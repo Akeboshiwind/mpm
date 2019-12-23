@@ -12,6 +12,9 @@ class MyTestImpl(core.PackageManager):
     def leaves(self):
         pass
 
+    def list_non_updatable(self):
+        pass
+
     def install(self):
         pass
 
