@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Support for Nix
 
+### Changed
+- Stop cask auto updating homebrew
+
 ## [0.3.0] - 2019-12-22
 ### Added
 - A better README with motivation, FAQ, etc
