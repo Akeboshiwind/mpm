@@ -1,4 +1,4 @@
-import re
+import re, os
 from integration import core
 
 class BrewCask(core.PackageManager):
@@ -33,7 +33,9 @@ class BrewCask(core.PackageManager):
             pkgs = [pkgs]
 
         if len(pkgs) > 0:
-            out = self.run("brew cask install".split() + pkgs)
+            env = os.environ.copy()
+            env["HOMEBREW_NO_AUTO_UPDATE"] = "1"
+            out = self.run("brew cask install".split() + pkgs, env=env)
             if out.returncode == 0:
                 # Test to see if the package was already installed
                 return re.search(r'.*already installed.*', out.stderr) == None
