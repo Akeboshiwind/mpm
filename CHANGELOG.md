@@ -33,6 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Brew cask integration
 - CLI
 
-[0.2.0]: https://github.com/akeboshiwind/mpm/compare/0.2.0...0.3.0
+[0.3.0]: https://github.com/akeboshiwind/mpm/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/akeboshiwind/mpm/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/akeboshiwind/mpm/releases/tag/0.1.0
