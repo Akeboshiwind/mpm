@@ -22,11 +22,11 @@ def command(args, cfg):
         # Update the manager
         print("[" + manager.config_name + "] update")
 
-        if args.verbose >= 1 or args.dry_run:
-            print(manager.config_name + " updated")
-
         if not(args.dry_run):
             manager.update()
+
+        if args.verbose >= 1 or args.dry_run:
+            print(manager.config_name + " updated")
 
         # Install new packages
         print("[" + manager.config_name + "] install new packages")
