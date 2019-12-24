@@ -1,3 +1,4 @@
+import sys
 from integration import brew, brew_cask, nix
 import utils
 
@@ -23,7 +24,9 @@ def command(args, cfg):
         print("[" + manager.config_name + "] update")
 
         if not(args.dry_run):
-            manager.update()
+            if not manager.update():
+                print(manager.config_name + " failed to update")
+                sys.exit(1)
 
         if args.verbose >= 1 or args.dry_run:
             print(manager.config_name + " updated")
@@ -40,7 +43,9 @@ def command(args, cfg):
             print(list(new_pkgs))
 
         if not(args.dry_run):
-            manager.install(list(new_pkgs))
+            if not manager.install(list(new_pkgs)):
+                print("Failed to install packages for " + manager.config_name)
+                sys.exit(1)
 
         # Uninstall old packages
         print("[" + manager.config_name + "] uninstall old packages")
@@ -54,7 +59,9 @@ def command(args, cfg):
             print(list(old_pkgs))
 
         if not(args.dry_run):
-            manager.uninstall(list(old_pkgs))
+            if not manager.uninstall(list(old_pkgs)):
+                print("Failed to uninstall packages for " + manager.config_name)
+                sys.exit(1)
 
         # Update installed packages
         print("[" + manager.config_name + "] update packages")
@@ -72,4 +79,6 @@ def command(args, cfg):
             print(list(updatable_pkgs))
 
         if not(args.dry_run):
-            manager.upgrade(list(updatable_pkgs))
+            if not manager.upgrade(list(updatable_pkgs)):
+                print("Failed to upgrade packages for " + manager.config_name)
+                sys.exit(1)
