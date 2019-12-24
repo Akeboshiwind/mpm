@@ -40,6 +40,10 @@ class TestNixInstall(TestCase):
         out = self.mgr.install([pkg1])
         self.assertTrue(out)
 
+    def test_install_no_packages(self):
+        out = self.mgr.install([])
+        self.assertTrue(out)
+
     def test_install_multiple_packages(self):
         out = self.mgr.install([pkg1, pkg2])
         self.assertTrue(out)
