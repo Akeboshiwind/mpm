@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Stop cask auto updating homebrew
+- Stop and exit the `update` command if any of the stages fail
+
+### Fixed
+- Print the 'updated' message after the manager has updated
+- Fix a bug where false would be returned if no packages were installed
+
 
 ## [0.3.0] - 2019-12-22
 ### Added
@@ -32,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Fix cask using the wrong update command
+
 
 ## [0.1.0] - 2019-09-23
 ### Added
