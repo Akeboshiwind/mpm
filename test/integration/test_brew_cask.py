@@ -78,6 +78,10 @@ class TestBrewCaskUninstall(TestCase):
         out = self.mgr.uninstall([pkg1])
         self.assertTrue(out)
 
+    def test_uninstall_no_packages(self):
+        out = self.mgr.uninstall([])
+        self.assertTrue(out)
+
     def test_uninstall_multiple_packages(self):
         out = self.mgr.uninstall([pkg1, pkg2])
         self.assertTrue(out)
