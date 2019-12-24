@@ -39,7 +39,7 @@ class Brew(core.PackageManager):
             else:
                 return False
         else:
-            return False
+            return True
 
     def uninstall(self, pkgs):
         if type(pkgs) is not list:
