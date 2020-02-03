@@ -1,10 +1,6 @@
 import sys
-from integration import brew, brew_cask, nix
+from integration import managers
 import utils
-
-managers = {"brew": brew.Brew,
-            "cask": brew_cask.BrewCask,
-            "nix": nix.Nix}
 
 def command(args, cfg):
     manager_order = cfg['managers']['order'].splitlines()
