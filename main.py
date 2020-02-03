@@ -4,7 +4,7 @@ from command import update
 from command import list_cmd
 from config import loadConfig, config_file_path
 
-VERSION = '0.4.0'
+VERSION = '0.5.0'
 
 if __name__ == "__main__":
     # Load Config

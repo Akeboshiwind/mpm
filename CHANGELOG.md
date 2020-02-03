@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2010-02-03
+### Added
+- List command
+
 ## [0.4.0] - 2019-12-24
 ### Added
 - Support for Nix
@@ -47,6 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Brew cask integration
 - CLI
 
+[0.5.0]: https://github.com/akeboshiwind/mpm/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/akeboshiwind/mpm/compare/0.3.0...0.4.0
 [0.3.0]: https://github.com/akeboshiwind/mpm/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/akeboshiwind/mpm/compare/0.1.0...0.2.0
