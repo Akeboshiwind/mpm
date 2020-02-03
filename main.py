@@ -1,6 +1,7 @@
 import os, sys, argparse
 
 from command import update
+from command import list_cmd
 from config import loadConfig, config_file_path
 
 VERSION = '0.4.0'
@@ -35,6 +36,11 @@ if __name__ == "__main__":
                                help="Include packages that we can't know if require an update",
                                action="store_true")
     parser_update.set_defaults(func=update.command)
+
+    ### Update subcommand
+    parser_list = subparsers.add_parser("list",
+                                        help="list packages")
+    parser_list.set_defaults(func=list_cmd.command)
 
 
     # Default to the 'update' command

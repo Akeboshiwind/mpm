@@ -34,6 +34,14 @@ class PackageManager(abc.ABC):
 
         return pkgs
 
+    def getPackagesByConfig(self, path):
+        pkgs = {}
+
+        for c in self.getConfigs(path):
+            pkgs[c] = parsePkgList(c)
+
+        return pkgs
+
     def run(self, command, **kwargs):
         if self.verbosity >= 2:
             print("command: ", command)
